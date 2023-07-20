@@ -55,14 +55,13 @@ class HomePage extends StatelessWidget {
       ),
       body: ValueListenableBuilder(
         builder: (BuildContext context, value, Widget? child) {
-          final contacts = value;
           return ListView.builder(
-            itemCount: contacts.length,
+            itemCount: value.length,
             itemBuilder: (context, index) {
-              final contact = contacts[index];
+              final contact = value[index];
               return Dismissible(
                 onDismissed: (direction) {
-                  contacts.remove(contact);
+                  value.remove(contact);
                 },
                 key: ValueKey(contact.id),
                 child: Material(
